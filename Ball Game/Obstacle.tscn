@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://djtht1dbyx8gp"]
+
+[ext_resource type="Texture2D" uid="uid://b1w3h1cib8pry" path="res://Textures/DemoSpritesheet.png" id="1_nfn2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaun2"]
+atlas = ExtResource("1_nfn2k")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pemi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaun2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4784"]
+size = Vector2(32, 17)
+
+[node name="Obstacle" type="StaticBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_0pemi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_o4784")
