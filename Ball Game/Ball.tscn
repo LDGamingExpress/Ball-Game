@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://btydu2e6jwv4e"]
+
+[ext_resource type="Script" uid="uid://cayjgrj31uwbh" path="res://BallMovementScript.gd" id="1_3tj6u"]
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_sr3km"]
+[ext_resource type="Texture2D" uid="uid://yvy6k5h64821" path="res://Textures/Line.png" id="3_oly7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_525q5"]
+atlas = ExtResource("2_sr3km")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmjjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_525q5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pc7e"]
+radius = 5.0
+height = 26.0
+
+[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("line")]
+gravity_scale = 15.0
+script = ExtResource("1_3tj6u")
+offsetMultiplier = Vector2(1, 1)
+line = NodePath("Line2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pmjjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5pc7e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -13.0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 5.0
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+width = 5.0
+texture = ExtResource("3_oly7h")
+texture_mode = 1
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
