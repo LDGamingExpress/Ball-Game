@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://ceieli3g3qsha"]
 
-[ext_resource type="Texture2D" uid="uid://b1w3h1cib8pry" path="res://Textures/DemoSpritesheet.png" id="1_h5dih"]
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_h5dih"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou7jl"]
 atlas = ExtResource("1_h5dih")
-region = Rect2(256, 0, 32, 32)
+region = Rect2(0, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ufda5"]
 animations = [{
@@ -17,7 +17,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fj540"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ufda5"]
+radius = 7.0
 
 [node name="Coin" type="StaticBody2D" groups=["Coins"]]
 texture_filter = 1
@@ -28,4 +29,4 @@ collision_mask = 2
 sprite_frames = SubResource("SpriteFrames_ufda5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fj540")
+shape = SubResource("CapsuleShape2D_ufda5")

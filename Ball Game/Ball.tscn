@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://btydu2e6jwv4e"]
+[gd_scene load_steps=9 format=3 uid="uid://btydu2e6jwv4e"]
 
 [ext_resource type="Script" uid="uid://cayjgrj31uwbh" path="res://BallMovementScript.gd" id="1_3tj6u"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_sr3km"]
 [ext_resource type="Texture2D" uid="uid://yvy6k5h64821" path="res://Textures/Line.png" id="3_oly7h"]
+[ext_resource type="Theme" uid="uid://dxkuunrkr0b8j" path="res://LevelFontTheme.tres" id="3_sr3km"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_525q5"]
 atlas = ExtResource("2_sr3km")
@@ -21,11 +22,11 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pc7e"]
 radius = 5.0
-height = 24.0
+height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tj6u"]
 radius = 6.0
-height = 26.0
+height = 24.5
 
 [node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("line") groups=["Player"]]
 texture_filter = 1
@@ -44,6 +45,45 @@ shape = SubResource("CapsuleShape2D_5pc7e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="LevelEndMenu" type="VBoxContainer" parent="Camera2D/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -21.0
+offset_right = 57.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_sr3km")
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/LevelEndMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Level Complete!"
+
+[node name="Label2" type="Label" parent="Camera2D/CanvasLayer/LevelEndMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Score:"
+
+[node name="NextButton" type="Button" parent="Camera2D/CanvasLayer/LevelEndMenu"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 48
+text = "Next Level"
+
+[node name="MenuButton" type="Button" parent="Camera2D/CanvasLayer/LevelEndMenu"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -67,6 +107,8 @@ position = Vector2(-0.5, 0.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3tj6u")
 
+[connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,76 @@
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://cebxss10ig50n"]
+
+[ext_resource type="PackedScene" uid="uid://cni1rh5aw5fwa" path="res://Glass.tscn" id="1_omoy3"]
+[ext_resource type="PackedScene" uid="uid://bex8m1hikaiup" path="res://SprayCan.tscn" id="2_i5rgf"]
+[ext_resource type="PackedScene" uid="uid://4opptoiua0pg" path="res://SoccerBall.tscn" id="3_rphn3"]
+[ext_resource type="PackedScene" uid="uid://cuaef4wlngadm" path="res://Barrel.tscn" id="4_mstm1"]
+[ext_resource type="PackedScene" uid="uid://bt22r7qltdhkf" path="res://FloorSign.tscn" id="5_8hg3r"]
+[ext_resource type="PackedScene" uid="uid://b7ndci2oijr63" path="res://PaperBall.tscn" id="6_2kl2l"]
+[ext_resource type="PackedScene" uid="uid://dew7usfu3guml" path="res://TennisBall.tscn" id="7_dol8p"]
+[ext_resource type="PackedScene" uid="uid://ceieli3g3qsha" path="res://Coin.tscn" id="8_p4xdx"]
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="9_5c2k4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5g1s2"]
+bounce = 0.22
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aiv1b"]
+friction = 0.94
+bounce = 0.11
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tb5ci"]
+scenes/1/scene = ExtResource("1_omoy3")
+scenes/2/scene = ExtResource("2_i5rgf")
+scenes/3/scene = ExtResource("3_rphn3")
+scenes/4/scene = ExtResource("4_mstm1")
+scenes/5/scene = ExtResource("5_8hg3r")
+scenes/6/scene = ExtResource("6_2kl2l")
+scenes/7/scene = ExtResource("7_dol8p")
+scenes/8/scene = ExtResource("8_p4xdx")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7astt"]
+texture = ExtResource("9_5c2k4")
+texture_region_size = Vector2i(32, 32)
+4:0/0 = 0
+4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(2.23042, 16, 2.23042, 4.77946, -0.63726, 3.82357, -0.63726, 0.31863, 16, 0.31863, 16, 4.46083, 12.7452, 4.46083, 12.7452, 16)
+7:0/0 = 0
+7:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 16, -10.1962, 9.24029, -0.31863, 16)
+0:2/0 = 0
+0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-9.55892, -5.09809, -1.91178, -5.73535, -2.23041, -9.24029, 0.637264, -9.24029, 1.27452, -5.09809, 8.2844, -5.09809, 7.32851, 3.50494, -7.96577, 3.82357)
+1:2/0 = 0
+1:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-2.54905, -0.955893, -3.50494, -7.96577, -1.27452, -12.108, 2.54905, -11.1521, 2.23042, -1.91179)
+4:2/0 = 0
+4:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-3.82357, 6.69125, -3.82357, -9.55892, 0.637264, -13.0639, 3.82357, -8.2844, 3.50494, 4.46083, 1.91179, 6.05399, 0.955894, 2.86768)
+5:2/0 = 0
+5:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-6.05398, 16, 16, -16, 16, 16)
+6:2/0 = 0
+6:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(2.23042, 16, 16, -4.46083, -2.86768, -16, -16, -16, -16, 16)
+5:3/0 = 0
+5:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -1.91179, -4.46083, -16, 16, -16, 16, 9.55892, 11.7893, 16)
+6:3/0 = 0
+6:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 10.8334, 3.82357, -16, -16, -16)
+0:4/0 = 0
+1:6/0 = 0
+2:7/0 = 0
+5:0/0 = 0
+5:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -0.31863, -0.63726, -0.31863, -0.31863, 3.82357, 2.54905, 3.82357, 2.54905, -16, 16, -16, 16, 16, -13.0639, 16, -13.0639, 4.77946, -16, 4.1422)
+6:0/0 = 0
+6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 13.3825, -16, 13.0639, 16, -16, 16)
+8:0/0 = 0
+8:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -0.114616, 0.0573082, 0, 0, 4.18352, -2.86543, 4.24083, -2.86543, 16, -13.0639, 16, -13.1236, 4.0689, -16, 4.0116)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.3825, 16, -11.1521, 12.7452, 5.73536, 9.87755, 11.7893, 10.1962, 12.108, 16)
+3:5/0 = 0
+3:6/0 = 0
+1:3/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_5g1s2")
+physics_layer_1/collision_layer = 1
+physics_layer_1/physics_material = SubResource("PhysicsMaterial_aiv1b")
+sources/0 = SubResource("TileSetScenesCollectionSource_tb5ci")
+sources/1 = SubResource("TileSetAtlasSource_7astt")

@@ -1,33 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://4opptoiua0pg"]
+[gd_scene load_steps=11 format=3 uid="uid://b7ndci2oijr63"]
 
-[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_4o4r3"]
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_7s1xg"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ukmtm"]
-friction = 0.6
-bounce = 0.6
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pelxx"]
+friction = 0.91
+bounce = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4cwpc"]
-atlas = ExtResource("1_4o4r3")
+atlas = ExtResource("1_7s1xg")
 region = Rect2(256, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iedbf"]
-atlas = ExtResource("1_4o4r3")
+atlas = ExtResource("1_7s1xg")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pulux"]
-atlas = ExtResource("1_4o4r3")
+atlas = ExtResource("1_7s1xg")
 region = Rect2(0, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6aitr"]
-atlas = ExtResource("1_4o4r3")
+atlas = ExtResource("1_7s1xg")
 region = Rect2(0, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlplc"]
-atlas = ExtResource("1_4o4r3")
+atlas = ExtResource("1_7s1xg")
 region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_af77x"]
-atlas = ExtResource("1_4o4r3")
+atlas = ExtResource("1_7s1xg")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d862r"]
@@ -56,20 +56,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3n5pc"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8sgsn"]
+radius = 4.12311
 
-[node name="SoccerBall" type="RigidBody2D"]
+[node name="PaperBall" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 3
 collision_mask = 3
-mass = 1.5
-physics_material_override = SubResource("PhysicsMaterial_ukmtm")
-gravity_scale = 7.0
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_pelxx")
+gravity_scale = 6.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d862r")
-frame = 1
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3n5pc")
+shape = SubResource("CircleShape2D_8sgsn")

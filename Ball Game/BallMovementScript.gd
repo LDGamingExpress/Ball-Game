@@ -1,4 +1,5 @@
 extends RigidBody2D
+var CoinP = preload("res://CoinParticles.tscn")
 #I dont understand a thing
 
 #Used for launching the ball
@@ -54,4 +55,23 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			NodeB.KnockOut()
 			NodeB.KnockOver()
 			Globals.Score += 100
-			
+	if body.is_in_group("Glass"):
+		if body.Broken == false:
+			body.call_deferred("Break")
+	if body.is_in_group("Exit"):
+		$Camera2D/CanvasLayer/LevelEndMenu.visible = true
+	if body.is_in_group("Coins"):
+		var NewObj = CoinP.instantiate()
+		NewObj.global_position = body.global_position
+		get_parent().add_child(NewObj)
+		Globals.Score += 250
+		body.queue_free()
+
+
+func _on_next_button_pressed() -> void:
+	Globals.Level += 1
+	get_tree().change_scene_to_file(Globals.Levels[Globals.Level])
+
+
+func _on_menu_button_pressed() -> void:
+	pass # Replace with function body.

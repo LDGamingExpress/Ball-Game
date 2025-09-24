@@ -268,6 +268,8 @@ size = Vector2(124, 57)
 [node name="Ragdoll" type="CharacterBody2D"]
 z_index = 1
 texture_filter = 1
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_nnq3i")
 
 [node name="Chest" type="RigidBody2D" parent="."]

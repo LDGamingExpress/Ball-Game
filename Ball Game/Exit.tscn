@@ -24,7 +24,7 @@ size = Vector2(32, 64)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.615686)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b7oqb"]
-frequency = 0.0342
+frequency = 0.0972
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sm8n4"]
 width = 5
