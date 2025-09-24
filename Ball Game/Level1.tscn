@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ckl76bm1rpi5u"]
+[gd_scene load_steps=12 format=4 uid="uid://ckl76bm1rpi5u"]
 
 [ext_resource type="Texture2D" uid="uid://b1w3h1cib8pry" path="res://Textures/DemoSpritesheet.png" id="1_kyxg0"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_lmyl5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cndrjy88677my" path="res://Goal.tscn" id="3_lmyl5"]
 [ext_resource type="PackedScene" uid="uid://djtht1dbyx8gp" path="res://Obstacle.tscn" id="4_mlbie"]
 [ext_resource type="PackedScene" uid="uid://btydu2e6jwv4e" path="res://Ball.tscn" id="7_mlbie"]
+[ext_resource type="PackedScene" uid="uid://b0oacflovb6jn" path="res://RagdollV2.tscn" id="7_s3sxq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlbie"]
 texture = ExtResource("1_lmyl5")
@@ -125,3 +126,6 @@ tile_set = SubResource("TileSet_cove1")
 
 [node name="Ball" parent="." instance=ExtResource("7_mlbie")]
 position = Vector2(36, 35)
+
+[node name="Ragdoll" parent="." instance=ExtResource("7_s3sxq")]
+position = Vector2(435, 20)

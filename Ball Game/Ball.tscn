@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btydu2e6jwv4e"]
+[gd_scene load_steps=8 format=3 uid="uid://btydu2e6jwv4e"]
 
 [ext_resource type="Script" uid="uid://cayjgrj31uwbh" path="res://BallMovementScript.gd" id="1_3tj6u"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_sr3km"]
@@ -21,9 +21,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pc7e"]
 radius = 5.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tj6u"]
+radius = 6.0
 height = 26.0
 
 [node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("line")]
+texture_filter = 1
 gravity_scale = 15.0
 script = ExtResource("1_3tj6u")
 offsetMultiplier = Vector2(1, 1)
@@ -33,6 +38,7 @@ line = NodePath("Line2D")
 sprite_frames = SubResource("SpriteFrames_pmjjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5pc7e")
 
@@ -52,5 +58,13 @@ width = 5.0
 texture = ExtResource("3_oly7h")
 texture_mode = 1
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3tj6u")
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

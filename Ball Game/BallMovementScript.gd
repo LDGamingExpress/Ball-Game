@@ -45,3 +45,9 @@ func _physics_process(delta: float) -> void:
 		var currOffset = get_global_mouse_position() - global_position
 		updateTrajectory(currOffset * offsetMultiplier, delta)
 		
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("KnockEnemy"):
+		body.get_parent().get_parent().get_parent().KnockOut()
+		Globals.Score += 100

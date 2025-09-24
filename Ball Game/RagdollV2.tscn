@@ -1,6 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://lyfbsgtpmowi"]
+[gd_scene load_steps=24 format=3 uid="uid://b0oacflovb6jn"]
 
 [ext_resource type="Texture2D" uid="uid://bt6swr0plkf5t" path="res://Textures/BallGameCharacterSprites.png" id="1_61brl"]
+[ext_resource type="Script" uid="uid://b586bt5m16nkc" path="res://RagdollScript.gd" id="1_nnq3i"]
+[ext_resource type="Texture2D" uid="uid://dd0f7jkaictcd" path="res://Textures/BirdKnockoutAnimation.png" id="3_sjld4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_61brl"]
 
@@ -39,6 +41,35 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gmmt"]
 radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxknc"]
+atlas = ExtResource("3_sjld4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gmmt"]
+atlas = ExtResource("3_sjld4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32id1"]
+atlas = ExtResource("3_sjld4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11155"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxknc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gmmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32id1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dasp"]
 atlas = ExtResource("1_61brl")
@@ -91,8 +122,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ieiag"]
+size = Vector2(124, 57)
+
 [node name="Ragdoll" type="CharacterBody2D"]
 texture_filter = 1
+script = ExtResource("1_nnq3i")
 
 [node name="Chest" type="RigidBody2D" parent="."]
 mass = 10.0
@@ -110,7 +145,7 @@ position = Vector2(0, -11)
 node_a = NodePath("..")
 node_b = NodePath("Head")
 
-[node name="Head" type="RigidBody2D" parent="Chest/NeckJoint"]
+[node name="Head" type="RigidBody2D" parent="Chest/NeckJoint" groups=["KnockEnemy"]]
 position = Vector2(0, -9)
 mass = 2.0
 gravity_scale = 2.0
@@ -120,6 +155,12 @@ sprite_frames = SubResource("SpriteFrames_nxknc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/NeckJoint/Head"]
 shape = SubResource("CircleShape2D_0gmmt")
+
+[node name="BirdAnimation" type="AnimatedSprite2D" parent="Chest/NeckJoint/Head"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 5)
+sprite_frames = SubResource("SpriteFrames_11155")
+autoplay = "default"
 
 [node name="ArmLJoint" type="PinJoint2D" parent="Chest"]
 position = Vector2(-7, -7)
@@ -187,3 +228,9 @@ sprite_frames = SubResource("SpriteFrames_o3jfo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/LegRJoint/LegR"]
 position = Vector2(5.5, -0.5)
 shape = SubResource("RectangleShape2D_ylilp")
+
+[node name="DetectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2(0, -18.5)
+shape = SubResource("RectangleShape2D_ieiag")
