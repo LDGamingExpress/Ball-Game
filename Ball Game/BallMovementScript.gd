@@ -48,37 +48,36 @@ func _physics_process(delta: float) -> void:
 		updateTrajectory(currOffset * offsetMultiplier, delta)
 		
 
-
+# Function for collision detection
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("KnockEnemy"):
-		var NodeB = body.get_parent().get_parent().get_parent()
-		if NodeB.KnockedOut == false:
-			var NewST = ScoreText.instantiate()
+	if body.is_in_group("KnockEnemy"):#Detects if the head of a ragdoll enemy is hit
+		var NodeB = body.get_parent().get_parent().get_parent()#Gets the characterbody of the enemy
+		if NodeB.KnockedOut == false:#Checks that enemy has not already been knocked out
+			var NewST = ScoreText.instantiate()#Instantiates text that shows score
 			NewST.Score = 100
 			NewST.global_position = body.global_position
 			get_parent().add_child(NewST)
-			NodeB.KnockOut()
-			NodeB.KnockOver()
+			NodeB.KnockOut()#Knocks out enemy
+			NodeB.KnockOver()#Pushes over enemy by adding angular velocity to their head
 			Globals.Score += 100
-	if body.is_in_group("Glass"):
-		if body.Broken == false:
-			body.call_deferred("Break")
-	if body.is_in_group("Exit"):
+	if body.is_in_group("Glass"):#Detects if glass is hit
+		if body.Broken == false:#Checks that glass has not already been broken (important to prevent repeated calls)
+			body.call_deferred("Break")#Breaks glass, deferred in case it tries to break it repeatedly
+	if body.is_in_group("Exit"):#Detects if the door to the next level is hit
 		$Camera2D/CanvasLayer/LevelEndMenu/Label2.text = "Score: " + str(Globals.Score)
 		$Camera2D/CanvasLayer/LevelEndMenu.visible = true
-		
-	if body.is_in_group("Coins"):
-		var NewObj = CoinP.instantiate()
+	if body.is_in_group("Coins"):#Detects if a coin is hit
+		var NewObj = CoinP.instantiate()#Instantiates particles for the coin
 		NewObj.global_position = body.global_position
 		get_parent().add_child(NewObj)
-		var NewST = ScoreText.instantiate()
+		var NewST = ScoreText.instantiate()#Instantiates text that shows score
 		NewST.Score = 250
 		NewST.global_position = body.global_position
 		get_parent().add_child(NewST)
 		Globals.Score += 250
-		body.queue_free()
+		body.queue_free()#Deletes coin
 
-
+# Function to change level when "next level" button is pressed
 func _on_next_button_pressed() -> void:
 	Globals.Level += 1
 	get_tree().change_scene_to_file(Globals.Levels[Globals.Level])
