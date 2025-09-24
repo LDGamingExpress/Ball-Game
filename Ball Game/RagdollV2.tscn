@@ -234,3 +234,5 @@ shape = SubResource("RectangleShape2D_ylilp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2(0, -18.5)
 shape = SubResource("RectangleShape2D_ieiag")
+
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

@@ -27,7 +27,7 @@ height = 24.0
 radius = 6.0
 height = 26.0
 
-[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("line")]
+[node name="Ball" type="RigidBody2D" node_paths=PackedStringArray("line") groups=["Player"]]
 texture_filter = 1
 gravity_scale = 15.0
 script = ExtResource("1_3tj6u")
