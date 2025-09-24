@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0oacflovb6jn"]
+[gd_scene load_steps=44 format=3 uid="uid://b0oacflovb6jn"]
 
 [ext_resource type="Texture2D" uid="uid://bt6swr0plkf5t" path="res://Textures/BallGameCharacterSprites.png" id="1_61brl"]
 [ext_resource type="Script" uid="uid://b586bt5m16nkc" path="res://RagdollScript.gd" id="1_nnq3i"]
@@ -10,11 +10,39 @@
 atlas = ExtResource("1_61brl")
 region = Rect2(0, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnq3i"]
+atlas = ExtResource("1_61brl")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjld4"]
+atlas = ExtResource("1_61brl")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11155"]
+atlas = ExtResource("1_61brl")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg277"]
+atlas = ExtResource("1_61brl")
+region = Rect2(128, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nnq3i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8q3na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnq3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjld4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11155")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg277")
 }],
 "loop": true,
 "name": &"default",
@@ -28,11 +56,39 @@ size = Vector2(12, 22)
 atlas = ExtResource("1_61brl")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylilp"]
+atlas = ExtResource("1_61brl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3jfo"]
+atlas = ExtResource("1_61brl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diqpe"]
+atlas = ExtResource("1_61brl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvb8v"]
+atlas = ExtResource("1_61brl")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nxknc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_br1xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylilp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3jfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diqpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvb8v")
 }],
 "loop": true,
 "name": &"default",
@@ -75,11 +131,39 @@ animations = [{
 atlas = ExtResource("1_61brl")
 region = Rect2(0, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_agmng"]
+atlas = ExtResource("1_61brl")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scviy"]
+atlas = ExtResource("1_61brl")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj5yo"]
+atlas = ExtResource("1_61brl")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc7tu"]
+atlas = ExtResource("1_61brl")
+region = Rect2(128, 64, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_32id1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3dasp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agmng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scviy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj5yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc7tu")
 }],
 "loop": true,
 "name": &"default",
@@ -93,11 +177,39 @@ size = Vector2(21, 4)
 atlas = ExtResource("1_61brl")
 region = Rect2(0, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sf5q"]
+atlas = ExtResource("1_61brl")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvatm"]
+atlas = ExtResource("1_61brl")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfl5x"]
+atlas = ExtResource("1_61brl")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln0c6"]
+atlas = ExtResource("1_61brl")
+region = Rect2(128, 128, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wg277"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ieiag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sf5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvatm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfl5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln0c6")
 }],
 "loop": true,
 "name": &"default",
@@ -111,11 +223,39 @@ size = Vector2(21, 5)
 atlas = ExtResource("1_61brl")
 region = Rect2(0, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7te15"]
+atlas = ExtResource("1_61brl")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr30o"]
+atlas = ExtResource("1_61brl")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h5yn"]
+atlas = ExtResource("1_61brl")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg427"]
+atlas = ExtResource("1_61brl")
+region = Rect2(128, 96, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_o3jfo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_loy5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7te15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr30o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h5yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg427")
 }],
 "loop": true,
 "name": &"default",
@@ -126,13 +266,14 @@ animations = [{
 size = Vector2(124, 57)
 
 [node name="Ragdoll" type="CharacterBody2D"]
+z_index = 1
 texture_filter = 1
 script = ExtResource("1_nnq3i")
 
 [node name="Chest" type="RigidBody2D" parent="."]
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_61brl")
-gravity_scale = 5.0
+gravity_scale = 10.0
 
 [node name="ChestSprite" type="AnimatedSprite2D" parent="Chest"]
 sprite_frames = SubResource("SpriteFrames_nnq3i")
@@ -144,11 +285,14 @@ shape = SubResource("RectangleShape2D_sjld4")
 position = Vector2(0, -11)
 node_a = NodePath("..")
 node_b = NodePath("Head")
+angular_limit_enabled = true
+angular_limit_lower = -0.0872665
+angular_limit_upper = 0.0872665
 
 [node name="Head" type="RigidBody2D" parent="Chest/NeckJoint" groups=["KnockEnemy"]]
 position = Vector2(0, -9)
 mass = 2.0
-gravity_scale = 2.0
+gravity_scale = 8.0
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="Chest/NeckJoint/Head"]
 sprite_frames = SubResource("SpriteFrames_nxknc")
@@ -170,7 +314,7 @@ node_b = NodePath("ArmL")
 [node name="ArmL" type="RigidBody2D" parent="Chest/ArmLJoint"]
 position = Vector2(-5, 0)
 rotation = 3.14159
-gravity_scale = 2.5
+gravity_scale = 5.0
 
 [node name="ArmSprite" type="AnimatedSprite2D" parent="Chest/ArmLJoint/ArmL"]
 sprite_frames = SubResource("SpriteFrames_32id1")
@@ -186,7 +330,7 @@ node_b = NodePath("ArmR")
 
 [node name="ArmR" type="RigidBody2D" parent="Chest/ArmRJoint"]
 position = Vector2(5, 0)
-gravity_scale = 2.5
+gravity_scale = 5.0
 
 [node name="ArmSprite" type="AnimatedSprite2D" parent="Chest/ArmRJoint/ArmR"]
 sprite_frames = SubResource("SpriteFrames_32id1")
@@ -203,7 +347,7 @@ node_b = NodePath("LegL")
 [node name="LegL" type="RigidBody2D" parent="Chest/LegLJoint"]
 position = Vector2(0, 5)
 rotation = -1.5708
-gravity_scale = 2.5
+gravity_scale = 5.0
 
 [node name="LegLSprite" type="AnimatedSprite2D" parent="Chest/LegLJoint/LegL"]
 sprite_frames = SubResource("SpriteFrames_wg277")
@@ -220,7 +364,7 @@ node_b = NodePath("LegR")
 [node name="LegR" type="RigidBody2D" parent="Chest/LegRJoint"]
 position = Vector2(0, 5)
 rotation = 1.5708
-gravity_scale = 2.5
+gravity_scale = 5.0
 
 [node name="LegRSprite" type="AnimatedSprite2D" parent="Chest/LegRJoint/LegR"]
 sprite_frames = SubResource("SpriteFrames_o3jfo")

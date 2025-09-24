@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://dinweklg6362d"]
+
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_vs230"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5bdx"]
+atlas = ExtResource("1_vs230")
+region = Rect2(128, 160, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bf2d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5bdx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqxco"]
+size = Vector2(32, 64)
+
+[sub_resource type="Gradient" id="Gradient_a8np2"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.615686)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b7oqb"]
+frequency = 0.0342
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sm8n4"]
+width = 5
+height = 5
+color_ramp = SubResource("Gradient_a8np2")
+noise = SubResource("FastNoiseLite_b7oqb")
+
+[sub_resource type="Curve" id="Curve_1u3fm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.404412, 0.640449), 1.03516, 1.03516, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4hn66"]
+curve = SubResource("Curve_1u3fm")
+
+[sub_resource type="Curve" id="Curve_y4r0c"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.303371), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ivyml"]
+curve = SubResource("Curve_y4r0c")
+
+[sub_resource type="Curve" id="Curve_vvvbs"]
+_data = [Vector2(0, 0), 0.0, 10.5791, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m2f5i"]
+curve = SubResource("Curve_vvvbs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kq7kv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 32, 1)
+angle_min = -288.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 45.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_m2f5i")
+alpha_curve = SubResource("CurveTexture_4hn66")
+hue_variation_curve = SubResource("CurveTexture_ivyml")
+turbulence_enabled = true
+
+[node name="Exit" type="StaticBody2D" groups=["Exit"]]
+texture_filter = 1
+position = Vector2(0, -8)
+collision_layer = 2
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bf2d0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sqxco")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 25
+texture = SubResource("NoiseTexture2D_sm8n4")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_kq7kv")

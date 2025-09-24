@@ -49,5 +49,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("KnockEnemy"):
-		body.get_parent().get_parent().get_parent().KnockOut()
-		Globals.Score += 100
+		var NodeB = body.get_parent().get_parent().get_parent()
+		if NodeB.KnockedOut == false:
+			NodeB.KnockOut()
+			NodeB.KnockOver()
+			Globals.Score += 100
+			
