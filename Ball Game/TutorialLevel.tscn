@@ -152,31 +152,43 @@ tile_set = SubResource("TileSet_na6ls")
 position = Vector2(36, 35)
 
 [node name="Text1" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.705882)
+z_index = 2
 offset_left = 14.0
 offset_top = -31.0
 offset_right = 153.0
 offset_bottom = 32.0
 theme = ExtResource("16_kdntj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Click and Drag
 the Ball to Fling
 it Over the Locker!"
 
 [node name="Text2" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.705882)
+z_index = 2
 offset_left = 256.0
 offset_top = -29.0
 offset_right = 395.0
 offset_bottom = 34.0
 theme = ExtResource("16_kdntj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Hit the Enemy on
 the Head to Knock
 Them Out!"
 
 [node name="Text3" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.705882)
+z_index = 2
 offset_left = 430.0
 offset_top = -31.0
 offset_right = 569.0
 offset_bottom = 54.0
 theme = ExtResource("16_kdntj")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Go Through the
 Door for
 the Next

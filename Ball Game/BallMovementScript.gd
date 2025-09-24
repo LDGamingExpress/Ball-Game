@@ -1,5 +1,6 @@
 extends RigidBody2D
 var CoinP = preload("res://CoinParticles.tscn")
+var ScoreText = preload("res://ScoreText.tscn")
 #I dont understand a thing
 
 #Used for launching the ball
@@ -52,6 +53,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("KnockEnemy"):
 		var NodeB = body.get_parent().get_parent().get_parent()
 		if NodeB.KnockedOut == false:
+			var NewST = ScoreText.instantiate()
+			NewST.Score = 100
+			NewST.global_position = body.global_position
+			get_parent().add_child(NewST)
 			NodeB.KnockOut()
 			NodeB.KnockOver()
 			Globals.Score += 100
@@ -59,11 +64,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if body.Broken == false:
 			body.call_deferred("Break")
 	if body.is_in_group("Exit"):
+		$Camera2D/CanvasLayer/LevelEndMenu/Label2.text = "Score: " + str(Globals.Score)
 		$Camera2D/CanvasLayer/LevelEndMenu.visible = true
+		
 	if body.is_in_group("Coins"):
 		var NewObj = CoinP.instantiate()
 		NewObj.global_position = body.global_position
 		get_parent().add_child(NewObj)
+		var NewST = ScoreText.instantiate()
+		NewST.Score = 250
+		NewST.global_position = body.global_position
+		get_parent().add_child(NewST)
 		Globals.Score += 250
 		body.queue_free()
 
