@@ -1,0 +1,189 @@
+[gd_scene load_steps=17 format=3 uid="uid://lyfbsgtpmowi"]
+
+[ext_resource type="Texture2D" uid="uid://bt6swr0plkf5t" path="res://Textures/BallGameCharacterSprites.png" id="1_61brl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_61brl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q3na"]
+atlas = ExtResource("1_61brl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnq3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q3na")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjld4"]
+size = Vector2(12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br1xa"]
+atlas = ExtResource("1_61brl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxknc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br1xa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gmmt"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dasp"]
+atlas = ExtResource("1_61brl")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32id1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dasp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11155"]
+size = Vector2(21, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieiag"]
+atlas = ExtResource("1_61brl")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wg277"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieiag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylilp"]
+size = Vector2(21, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loy5o"]
+atlas = ExtResource("1_61brl")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3jfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loy5o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ragdoll" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="Chest" type="RigidBody2D" parent="."]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_61brl")
+gravity_scale = 5.0
+
+[node name="ChestSprite" type="AnimatedSprite2D" parent="Chest"]
+sprite_frames = SubResource("SpriteFrames_nnq3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
+shape = SubResource("RectangleShape2D_sjld4")
+
+[node name="NeckJoint" type="PinJoint2D" parent="Chest"]
+position = Vector2(0, -11)
+node_a = NodePath("..")
+node_b = NodePath("Head")
+
+[node name="Head" type="RigidBody2D" parent="Chest/NeckJoint"]
+position = Vector2(0, -9)
+mass = 2.0
+gravity_scale = 2.0
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="Chest/NeckJoint/Head"]
+sprite_frames = SubResource("SpriteFrames_nxknc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/NeckJoint/Head"]
+shape = SubResource("CircleShape2D_0gmmt")
+
+[node name="ArmLJoint" type="PinJoint2D" parent="Chest"]
+position = Vector2(-7, -7)
+node_a = NodePath("..")
+node_b = NodePath("ArmL")
+
+[node name="ArmL" type="RigidBody2D" parent="Chest/ArmLJoint"]
+position = Vector2(-5, 0)
+rotation = 3.14159
+gravity_scale = 2.5
+
+[node name="ArmSprite" type="AnimatedSprite2D" parent="Chest/ArmLJoint/ArmL"]
+sprite_frames = SubResource("SpriteFrames_32id1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/ArmLJoint/ArmL"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_11155")
+
+[node name="ArmRJoint" type="PinJoint2D" parent="Chest"]
+position = Vector2(7, -7)
+node_a = NodePath("..")
+node_b = NodePath("ArmR")
+
+[node name="ArmR" type="RigidBody2D" parent="Chest/ArmRJoint"]
+position = Vector2(5, 0)
+gravity_scale = 2.5
+
+[node name="ArmSprite" type="AnimatedSprite2D" parent="Chest/ArmRJoint/ArmR"]
+sprite_frames = SubResource("SpriteFrames_32id1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/ArmRJoint/ArmR"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_11155")
+
+[node name="LegLJoint" type="PinJoint2D" parent="Chest"]
+position = Vector2(-4, 11)
+node_a = NodePath("..")
+node_b = NodePath("LegL")
+
+[node name="LegL" type="RigidBody2D" parent="Chest/LegLJoint"]
+position = Vector2(0, 5)
+rotation = -1.5708
+gravity_scale = 2.5
+
+[node name="LegLSprite" type="AnimatedSprite2D" parent="Chest/LegLJoint/LegL"]
+sprite_frames = SubResource("SpriteFrames_wg277")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/LegLJoint/LegL"]
+position = Vector2(-5.5, -1)
+shape = SubResource("RectangleShape2D_ylilp")
+
+[node name="LegRJoint" type="PinJoint2D" parent="Chest"]
+position = Vector2(4, 11)
+node_a = NodePath("..")
+node_b = NodePath("LegR")
+
+[node name="LegR" type="RigidBody2D" parent="Chest/LegRJoint"]
+position = Vector2(0, 5)
+rotation = 1.5708
+gravity_scale = 2.5
+
+[node name="LegRSprite" type="AnimatedSprite2D" parent="Chest/LegRJoint/LegR"]
+sprite_frames = SubResource("SpriteFrames_o3jfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest/LegRJoint/LegR"]
+position = Vector2(5.5, -0.5)
+shape = SubResource("RectangleShape2D_ylilp")

@@ -1,0 +1,199 @@
+[gd_scene load_steps=11 format=3 uid="uid://c56gx3t1467ot"]
+
+[ext_resource type="Texture2D" uid="uid://bt6swr0plkf5t" path="res://Textures/BallGameCharacterSprites.png" id="1_mndxs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xwapg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igdwk"]
+size = Vector2(6, 12)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_attr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxy6r"]
+size = Vector2(17, 12)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mndxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lrqy"]
+size = Vector2(4, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuk5f"]
+size = Vector2(4, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8mp7l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7dcdx"]
+radius = 9.0
+
+[node name="Ragdoll" type="Node2D"]
+texture_filter = 1
+
+[node name="Polygons" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="LegL" type="Polygon2D" parent="Polygons"]
+position = Vector2(-149, -5)
+rotation = -1.5708
+texture = ExtResource("1_mndxs")
+polygon = PackedVector2Array(-0.44521, 138.583, -0.44521, 146.42, 21.1693, 146.376, 21.4707, 143.879, 20.7387, 141.597, 2.39654, 141.554, 2.18125, 138.497)
+uv = PackedVector2Array(-0.44521, 138.583, -0.44521, 146.42, 21.1693, 146.376, 21.4707, 143.879, 20.7387, 141.597, 2.39654, 141.554, 2.18125, 138.497)
+
+[node name="LegR" type="Polygon2D" parent="Polygons"]
+position = Vector2(115, -37)
+rotation = 1.5708
+texture = ExtResource("1_mndxs")
+polygon = PackedVector2Array(32.6501, 106.348, 32.6501, 114.744, 10.9064, 114.615, 10.2606, 110.223, 12.2412, 109.62, 29.1625, 109.405, 29.55, 106.391)
+uv = PackedVector2Array(32.6501, 106.348, 32.6501, 114.744, 10.9064, 114.615, 10.2606, 110.223, 12.2412, 109.62, 29.1625, 109.405, 29.55, 106.391)
+
+[node name="Body" type="Polygon2D" parent="Polygons"]
+position = Vector2(-17, -84)
+texture = ExtResource("1_mndxs")
+polygon = PackedVector2Array(16.0811, 35.9521, 7.52279, 37.1268, 8.36184, 45.5174, 9.45261, 58.8583, 12.8088, 61.1238, 17.2558, 61.2916, 20.7798, 59.6974, 23.8843, 57.9354, 24.0522, 43.5036, 23.4648, 37.3785)
+uv = PackedVector2Array(16.0811, 35.9521, 7.52279, 37.1268, 8.36184, 45.5174, 9.45261, 58.8583, 12.8088, 61.1238, 17.2558, 61.2916, 20.7798, 59.6974, 23.8843, 57.9354, 24.0522, 43.5036, 23.4648, 37.3785)
+
+[node name="ArmL" type="Polygon2D" parent="Polygons"]
+position = Vector2(-6, -124)
+texture = ExtResource("1_mndxs")
+polygon = PackedVector2Array(10.4516, 77.5895, 32.8842, 77.6756, 32.8412, 82.2396, 10.4947, 82.498)
+uv = PackedVector2Array(10.4516, 77.5895, 32.8842, 77.6756, 32.8412, 82.2396, 10.4947, 82.498)
+
+[node name="ArmR" type="Polygon2D" parent="Polygons"]
+position = Vector2(4, 36)
+rotation = 3.14159
+texture = ExtResource("1_mndxs")
+polygon = PackedVector2Array(10.4516, 77.5895, 32.8842, 77.6756, 32.8412, 82.2396, 10.4947, 82.498)
+uv = PackedVector2Array(10.4516, 77.5895, 32.8842, 77.6756, 32.8412, 82.2396, 10.4947, 82.498)
+
+[node name="Head" type="Polygon2D" parent="Polygons"]
+position = Vector2(-17, -72)
+texture = ExtResource("1_mndxs")
+polygon = PackedVector2Array(15.8428, 6.33752, 6.82816, 8.14045, 5.64932, 17.0857, 9.11649, 25.7537, 17.299, 26.6551, 24.164, 23.6734, 26.591, 16.531, 24.3027, 8.48716)
+uv = PackedVector2Array(15.8428, 6.33752, 6.82816, 8.14045, 5.64932, 17.0857, 9.11649, 25.7537, 17.299, 26.6551, 24.164, 23.6734, 26.591, 16.531, 24.3027, 8.48716)
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(0, -26)
+rotation = -1.5708
+rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 0, -26)
+auto_calculate_length_and_angle = false
+length = 4.0
+bone_angle = 0.0
+
+[node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
+position = Vector2(6, 2.62268e-07)
+rest = Transform2D(1, 0, 0, 1, 6, 2.62268e-07)
+auto_calculate_length_and_angle = false
+length = 14.0
+bone_angle = 0.0
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
+position = Vector2(12, 5.24537e-07)
+rest = Transform2D(1, 0, 0, 1, 12, 5.24537e-07)
+auto_calculate_length_and_angle = false
+length = 10.0
+bone_angle = 0.0
+
+[node name="ArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
+position = Vector2(12, 7)
+rotation = 1.5708
+rest = Transform2D(-4.37114e-08, 1, -1, -4.37114e-08, 12, 7)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="ArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
+position = Vector2(12, -7)
+rotation = -3.14159
+rest = Transform2D(-1, -1.50996e-07, 1.50996e-07, -1, 12, -7)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 90.0
+
+[node name="LegL" type="Bone2D" parent="Skeleton2D/Hip"]
+position = Vector2(-1, -4)
+rotation = -3.14159
+rest = Transform2D(-1, -8.74228e-08, 8.74228e-08, -1, -1, -4)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="LegR" type="Bone2D" parent="Skeleton2D/Hip"]
+position = Vector2(-1, 4)
+rest = Transform2D(1, 0, 0, 1, -1, 4)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -180.0
+
+[node name="Hip2" type="PhysicalBone2D" parent="Skeleton2D"]
+position = Vector2(0, -26)
+rotation = -1.5708
+physics_material_override = SubResource("PhysicsMaterial_xwapg")
+bone2d_nodepath = NodePath("../Hip")
+bone2d_index = 0
+simulate_physics = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Hip2"]
+shape = SubResource("RectangleShape2D_igdwk")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton2D/Hip2"]
+node_a = NodePath("..")
+node_b = NodePath("Chest")
+
+[node name="Chest" type="PhysicalBone2D" parent="Skeleton2D/Hip2/PinJoint2D"]
+position = Vector2(3, 1.31134e-07)
+physics_material_override = SubResource("PhysicsMaterial_attr6")
+bone2d_nodepath = NodePath("../../../Hip/Chest")
+bone2d_index = 1
+simulate_physics = true
+follow_bone_when_simulating = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_bxy6r")
+
+[node name="ArmLJoint" type="PinJoint2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest"]
+node_a = NodePath("..")
+node_b = NodePath("ArmL")
+
+[node name="ArmL" type="PhysicalBone2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest/ArmLJoint"]
+physics_material_override = SubResource("PhysicsMaterial_mndxs")
+bone2d_nodepath = NodePath("../../../../../Hip/Chest/ArmL")
+bone2d_index = 10
+simulate_physics = true
+follow_bone_when_simulating = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest/ArmLJoint/ArmL"]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_5lrqy")
+
+[node name="ArmRJoint" type="PinJoint2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest"]
+position = Vector2(12, 6)
+node_a = NodePath("..")
+node_b = NodePath("ArmR")
+
+[node name="ArmR" type="PhysicalBone2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest/ArmRJoint"]
+bone2d_nodepath = NodePath("../../../../../Hip/Chest/ArmR")
+bone2d_index = 4
+simulate_physics = true
+follow_bone_when_simulating = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest/ArmRJoint/ArmR"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_wuk5f")
+
+[node name="NeckJoint" type="PinJoint2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest"]
+position = Vector2(14, 6.11959e-07)
+node_a = NodePath("..")
+node_b = NodePath("Head")
+
+[node name="Head" type="PhysicalBone2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest/NeckJoint"]
+physics_material_override = SubResource("PhysicsMaterial_8mp7l")
+bone2d_nodepath = NodePath("../../../../../Hip/Chest/Head")
+bone2d_index = 2
+simulate_physics = true
+follow_bone_when_simulating = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Hip2/PinJoint2D/Chest/NeckJoint/Head"]
+position = Vector2(10, 4.37114e-07)
+shape = SubResource("CircleShape2D_7dcdx")
