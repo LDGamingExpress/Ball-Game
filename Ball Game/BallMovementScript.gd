@@ -11,18 +11,19 @@ var offset = Vector2(0, 0)
 #Trajectory line
 @export var line: Line2D
 
-
+#marks the button as being pressed and changes the offset to show it has been clicked
 func _on_button_button_down() -> void:
 	buttonPressed = true
 	offset = Vector2(100, 0)
 	line.show()
 
+#checks when button is released and changes the offset to vector between the ball and the mouse
 func _on_button_button_up() -> void:
 	buttonPressed = false
 	offset = get_global_mouse_position() - global_position
 	line.hide()
 
-
+#updates the trajectory of the line by taking the current offset and simulating its path
 func updateTrajectory(currOffset: Vector2, delta: float):
 	var maxPoints = 100
 	
@@ -37,12 +38,13 @@ func updateTrajectory(currOffset: Vector2, delta: float):
 
 
 func _physics_process(delta: float) -> void:
-	#Ball gets launched only once
+	#Ball gets launched when the button has been released and only once
 	if offset.x != 100 and buttonPressed == false:
 		linear_velocity += -offset * offsetMultiplier
 		angular_velocity = -offset.x / 5
 		offset = Vector2(100, 0)
 		
+		#if the button is pressed it takes the current offset and updates the trajectory
 	elif buttonPressed == true:
 		var currOffset = get_global_mouse_position() - global_position
 		updateTrajectory(currOffset * offsetMultiplier, delta)
