@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx00akwyuqf41"]
+
+[ext_resource type="Script" uid="uid://ctk6hf8ysgej1" path="res://TennisBallMachineScript.gd" id="1_mexqf"]
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_ctr6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfh1d"]
+atlas = ExtResource("2_ctr6u")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81iui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfh1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ravi"]
+size = Vector2(59, 102)
+
+[node name="TennisBallMachine" type="Node2D"]
+script = ExtResource("1_mexqf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_81iui")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-38, -33)
+shape = SubResource("RectangleShape2D_8ravi")
+
+[connection signal="body_entered" from="Area2D" to="." method="onBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="onBodyExited"]
