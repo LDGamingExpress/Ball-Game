@@ -32,7 +32,7 @@ func updateTrajectory(currOffset: Vector2, delta: float):
 	
 	for i in maxPoints:
 		line.add_point(pos)
-		currOffset.y -= gravity_scale * delta * 10
+		currOffset.y -= gravity_scale * delta * 9.8
 		pos += -currOffset * delta
 
 

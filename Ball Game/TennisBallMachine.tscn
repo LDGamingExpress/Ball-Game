@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx00akwyuqf41"]
+[gd_scene load_steps=13 format=3 uid="uid://dx00akwyuqf41"]
 
 [ext_resource type="Script" uid="uid://ctk6hf8ysgej1" path="res://TennisBallMachineScript.gd" id="1_mexqf"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_ctr6u"]
+[ext_resource type="Texture2D" uid="uid://ria8wbkstxkb" path="res://Textures/BrokenBallMachine.png" id="2_qfh1d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81iui"]
+atlas = ExtResource("2_qfh1d")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfh1d"]
 atlas = ExtResource("2_ctr6u")
@@ -11,6 +16,14 @@ region = Rect2(32, 224, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_81iui")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qfh1d")
 }],
 "loop": true,
@@ -18,21 +31,62 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ravi"]
-size = Vector2(59, 102)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dw8w"]
+size = Vector2(25, 21)
 
-[node name="TennisBallMachine" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ravi"]
+size = Vector2(100.5, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n32l3"]
+size = Vector2(22, 7)
+
+[sub_resource type="Gradient" id="Gradient_ctr6u"]
+offsets = PackedFloat32Array(0, 0.00909091, 0.909091, 1)
+colors = PackedColorArray(0.362829, 0.362829, 0.362829, 1, 0.340339, 0.340339, 0.340339, 1, 0.61339, 0.61339, 0.61339, 1, 0.370364, 0.370364, 0.370364, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qfh1d"]
+gradient = SubResource("Gradient_ctr6u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ctr6u"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 5, 1)
+inherit_velocity_ratio = 1.0
+direction = Vector3(1, -1, 0)
+gravity = Vector3(0, -25, 0)
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_qfh1d")
+
+[node name="TennisBallMachine" type="CharacterBody2D"]
 script = ExtResource("1_mexqf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_81iui")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 5.5)
+shape = SubResource("RectangleShape2D_5dw8w")
+
+[node name="DeterctionArea" type="Area2D" parent="."]
 collision_layer = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-38, -33)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeterctionArea"]
+position = Vector2(-58.75, -7.5)
 shape = SubResource("RectangleShape2D_8ravi")
 
-[connection signal="body_entered" from="Area2D" to="." method="onBodyEntered"]
-[connection signal="body_exited" from="Area2D" to="." method="onBodyExited"]
+[node name="BreakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakArea"]
+position = Vector2(3, -8.5)
+shape = SubResource("RectangleShape2D_n32l3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, -7)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_ctr6u")
+
+[connection signal="area_entered" from="DeterctionArea" to="." method="onDeterctionAreaEntered"]
+[connection signal="area_exited" from="DeterctionArea" to="." method="onDetectionAreaExited"]
+[connection signal="area_entered" from="BreakArea" to="." method="onBreakAreaEntered"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://yxn7iwjdpwas"]
+[gd_scene load_steps=8 format=4 uid="uid://yxn7iwjdpwas"]
 
 [ext_resource type="TileSet" uid="uid://c2sp5gpslrnv6" path="res://BackgroundTileSet.tres" id="1_wwdpc"]
 [ext_resource type="TileSet" uid="uid://cebxss10ig50n" path="res://PropsSceneTileset.tres" id="6_6x3wt"]
-[ext_resource type="PackedScene" uid="uid://dx00akwyuqf41" path="res://TennisBallMachine.tscn" id="10_3453u"]
 [ext_resource type="PackedScene" uid="uid://b0oacflovb6jn" path="res://RagdollV2.tscn" id="13_36n3i"]
 [ext_resource type="PackedScene" uid="uid://dinweklg6362d" path="res://Exit.tscn" id="14_kfb7d"]
 [ext_resource type="PackedScene" uid="uid://btydu2e6jwv4e" path="res://Ball.tscn" id="15_mpxk2"]
@@ -31,6 +30,3 @@ tile_set = SubResource("TileSet_d8gnr")
 
 [node name="Ball" parent="." instance=ExtResource("15_mpxk2")]
 position = Vector2(36, 35)
-
-[node name="TennisBallMachine" parent="." instance=ExtResource("10_3453u")]
-position = Vector2(336, 56)
