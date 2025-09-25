@@ -1,15 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx00akwyuqf41"]
+[gd_scene load_steps=19 format=3 uid="uid://bwybngbs1totc"]
 
-[ext_resource type="Script" uid="uid://ctk6hf8ysgej1" path="res://TennisBallMachineScript.gd" id="1_mexqf"]
-[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_ctr6u"]
-[ext_resource type="Texture2D" uid="uid://ria8wbkstxkb" path="res://Textures/BrokenBallMachine.png" id="2_qfh1d"]
+[ext_resource type="Script" uid="uid://b2p58q81xhkvo" path="res://TennisBallMachineRightScript.gd" id="1_gmrxk"]
+[ext_resource type="Texture2D" uid="uid://ria8wbkstxkb" path="res://Textures/BrokenBallMachine.png" id="2_hp423"]
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="3_pnb4r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81iui"]
-atlas = ExtResource("2_qfh1d")
+atlas = ExtResource("2_hp423")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfh1d"]
-atlas = ExtResource("2_ctr6u")
+atlas = ExtResource("3_pnb4r")
 region = Rect2(32, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_81iui"]
@@ -58,28 +58,28 @@ gravity = Vector3(0, -25, 0)
 scale_max = 2.0
 color_ramp = SubResource("GradientTexture1D_qfh1d")
 
-[sub_resource type="Gradient" id="Gradient_qfh1d"]
+[sub_resource type="Gradient" id="Gradient_1x4rb"]
 offsets = PackedFloat32Array(0, 0.766234, 1)
 colors = PackedColorArray(0.784314, 0.0941176, 0, 0, 0.787624, 0.476471, 0.11752, 0.422078, 0.792157, 1, 0.278431, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_81iui"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tcyuw"]
 noise_type = 0
 frequency = 0.0977
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ravi"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gmrxk"]
 width = 6
 height = 6
-color_ramp = SubResource("Gradient_qfh1d")
-noise = SubResource("FastNoiseLite_81iui")
+color_ramp = SubResource("Gradient_1x4rb")
+noise = SubResource("FastNoiseLite_tcyuw")
 
-[sub_resource type="Curve" id="Curve_vlorq"]
+[sub_resource type="Curve" id="Curve_tcyuw"]
 _data = [Vector2(0, 0.516854), 0.0, 5.26342, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_5dw8w"]
-curve = SubResource("Curve_vlorq")
+[sub_resource type="CurveTexture" id="CurveTexture_1sc5d"]
+curve = SubResource("Curve_tcyuw")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n32l3"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hp423"]
 particle_flag_disable_z = true
 angle_min = -310.2
 angle_max = 288.0
@@ -88,11 +88,11 @@ spread = 93.253
 initial_velocity_min = 75.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 30, 0)
-scale_curve = SubResource("CurveTexture_5dw8w")
+scale_curve = SubResource("CurveTexture_1sc5d")
 
 [node name="TennisBallMachine" type="CharacterBody2D"]
 position = Vector2(0, -24)
-script = ExtResource("1_mexqf")
+script = ExtResource("1_gmrxk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_81iui")
@@ -105,7 +105,7 @@ shape = SubResource("RectangleShape2D_5dw8w")
 collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeterctionArea"]
-position = Vector2(-100, -7.5)
+position = Vector2(100, -7.5)
 shape = SubResource("RectangleShape2D_8ravi")
 
 [node name="BreakArea" type="Area2D" parent="."]
@@ -123,11 +123,11 @@ process_material = SubResource("ParticleProcessMaterial_ctr6u")
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 14
-texture = SubResource("NoiseTexture2D_8ravi")
+texture = SubResource("NoiseTexture2D_gmrxk")
 lifetime = 0.8
 one_shot = true
 explosiveness = 0.95
-process_material = SubResource("ParticleProcessMaterial_n32l3")
+process_material = SubResource("ParticleProcessMaterial_hp423")
 
 [connection signal="area_entered" from="DeterctionArea" to="." method="onDeterctionAreaEntered"]
 [connection signal="area_exited" from="DeterctionArea" to="." method="onDetectionAreaExited"]

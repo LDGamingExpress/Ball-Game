@@ -4,6 +4,10 @@ var tennisBall = preload("res://TennisBall.tscn")
 var isInArea = false
 var isBroken = false
 
+func _ready() -> void:
+	$AnimatedSprite2D.flip_h = true
+	
+
 #Detects when the ball has entered to detection area so the machine can fire
 func onDeterctionAreaEntered(area: Area2D) -> void:
 	#makes sure the object in the area is the ball and the machine isnt broken
@@ -15,7 +19,7 @@ func onDeterctionAreaEntered(area: Area2D) -> void:
 			get_parent().call_deferred("add_child", newObj)
 			
 			newObj.global_position = global_position
-			newObj.linear_velocity = Vector2(-350 * scale.x , 0)
+			newObj.linear_velocity = Vector2(350 * scale.x , 0)
 			
 			await get_tree().create_timer(1.0).timeout
 

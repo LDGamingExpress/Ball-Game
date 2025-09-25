@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cd61cnu8e1dts"]
+
+[ext_resource type="PackedScene" uid="uid://b0oacflovb6jn" path="res://RagdollV2.tscn" id="1_yqqr8"]
+[ext_resource type="PackedScene" uid="uid://dinweklg6362d" path="res://Exit.tscn" id="2_h1ysl"]
+[ext_resource type="PackedScene" uid="uid://dx00akwyuqf41" path="res://TennisBallMachine.tscn" id="3_h1ysl"]
+[ext_resource type="PackedScene" uid="uid://bwybngbs1totc" path="res://TennisBallMachineRight.tscn" id="4_0rvgj"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mi27w"]
+scenes/1/scene = ExtResource("1_yqqr8")
+scenes/2/scene = ExtResource("2_h1ysl")
+scenes/3/scene = ExtResource("3_h1ysl")
+scenes/4/scene = ExtResource("4_0rvgj")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_mi27w")
