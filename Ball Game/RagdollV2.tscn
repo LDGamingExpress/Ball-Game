@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://b0oacflovb6jn"]
+[gd_scene load_steps=45 format=3 uid="uid://b0oacflovb6jn"]
 
 [ext_resource type="Texture2D" uid="uid://bt6swr0plkf5t" path="res://Textures/BallGameCharacterSprites.png" id="1_61brl"]
 [ext_resource type="Script" uid="uid://b586bt5m16nkc" path="res://RagdollScript.gd" id="1_nnq3i"]
 [ext_resource type="Texture2D" uid="uid://dd0f7jkaictcd" path="res://Textures/BirdKnockoutAnimation.png" id="3_sjld4"]
+[ext_resource type="AudioStream" uid="uid://dq6dyfevgd0y" path="res://Sounds/Cartoon Dizzy Birds.mp3" id="4_sjld4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_61brl"]
 
@@ -380,5 +381,9 @@ shape = SubResource("RectangleShape2D_ylilp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2(0, -18.5)
 shape = SubResource("RectangleShape2D_ieiag")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sjld4")
+volume_db = 5.0
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

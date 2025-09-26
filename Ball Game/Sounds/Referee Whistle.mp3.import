@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4ki3b1eyrh1s"
+path="res://.godot/imported/Referee Whistle.mp3-2219d0924853bdffa4bec4c69d1bf21d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Referee Whistle.mp3"
+dest_files=["res://.godot/imported/Referee Whistle.mp3-2219d0924853bdffa4bec4c69d1bf21d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

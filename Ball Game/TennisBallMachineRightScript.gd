@@ -5,8 +5,14 @@ var isInArea = false
 var isBroken = false
 var ScoreText = preload("res://ScoreText.tscn")
 
+var firedSound = load("res://Sounds/Tennis Ball Fired.mp3")
+var brokenSound = load("res://Sounds/Tennis Ball Machine Broken.mp3")
+
+var rng = RandomNumberGenerator.new()
+
 func _ready() -> void:
 	$AnimatedSprite2D.flip_h = true
+	rng.randomize()
 
 #Detects when the ball has entered to detection area so the machine can fire
 func onDeterctionAreaEntered(area: Area2D) -> void:
@@ -22,6 +28,10 @@ func onDeterctionAreaEntered(area: Area2D) -> void:
 				newObj.global_position = global_position
 				newObj.linear_velocity = Vector2(350 * scale.x , 0)
 				
+				$AudioStreamPlayer2D.stream = firedSound
+				$AudioStreamPlayer2D.pitch_scale = rng.randf_range(.9, 1.1)
+				$AudioStreamPlayer2D.play()
+				
 			await get_tree().create_timer(1.0).timeout
 
 #checks when the ball leaves the area so the machine can stop firing
@@ -33,6 +43,10 @@ func onDetectionAreaExited(area: Area2D) -> void:
 func onBreakAreaEntered(area: Area2D) -> void:
 	if area.get_parent().name == "Ball" and !isBroken:
 		$AnimatedSprite2D.play("broken")
+		$AudioStreamPlayer2D.stream = brokenSound
+		$AudioStreamPlayer2D.volume_db = 15
+		$AudioStreamPlayer2D.pitch_scale = rng.randf_range(.8, 1.2)
+		$AudioStreamPlayer2D.play()
 		$GPUParticles2D.emitting = true
 		$ExplosionParticles.emitting = true
 		isBroken = true

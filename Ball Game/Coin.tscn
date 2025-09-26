@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceieli3g3qsha"]
+[gd_scene load_steps=6 format=3 uid="uid://ceieli3g3qsha"]
 
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_h5dih"]
+[ext_resource type="AudioStream" uid="uid://cnm4cg331n3wn" path="res://Sounds/Cheers.mp3" id="2_ou7jl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou7jl"]
 atlas = ExtResource("1_h5dih")
@@ -30,3 +31,7 @@ sprite_frames = SubResource("SpriteFrames_ufda5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ufda5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ou7jl")
+volume_db = 1.0

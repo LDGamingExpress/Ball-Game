@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx00akwyuqf41"]
+[gd_scene load_steps=20 format=3 uid="uid://dx00akwyuqf41"]
 
 [ext_resource type="Script" uid="uid://ctk6hf8ysgej1" path="res://TennisBallMachineScript.gd" id="1_mexqf"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_ctr6u"]
 [ext_resource type="Texture2D" uid="uid://ria8wbkstxkb" path="res://Textures/BrokenBallMachine.png" id="2_qfh1d"]
+[ext_resource type="AudioStream" uid="uid://clpunkyykqfuu" path="res://Sounds/Tennis Ball Fired.mp3" id="4_qfh1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81iui"]
 atlas = ExtResource("2_qfh1d")
@@ -129,6 +130,11 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_n32l3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qfh1d")
+volume_db = 5.0
+pitch_scale = 1.1
 
 [connection signal="area_entered" from="DeterctionArea" to="." method="onDeterctionAreaEntered"]
 [connection signal="area_exited" from="DeterctionArea" to="." method="onDetectionAreaExited"]

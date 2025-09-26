@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://btydu2e6jwv4e"]
+[gd_scene load_steps=10 format=3 uid="uid://btydu2e6jwv4e"]
 
 [ext_resource type="Script" uid="uid://cayjgrj31uwbh" path="res://BallMovementScript.gd" id="1_3tj6u"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_sr3km"]
 [ext_resource type="Texture2D" uid="uid://yvy6k5h64821" path="res://Textures/Line.png" id="3_oly7h"]
 [ext_resource type="Theme" uid="uid://dxkuunrkr0b8j" path="res://LevelFontTheme.tres" id="3_sr3km"]
+[ext_resource type="AudioStream" uid="uid://dr5ywky0qxsx4" path="res://Sounds/Ball Launched.mp3" id="5_oly7h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_525q5"]
 atlas = ExtResource("2_sr3km")
@@ -110,6 +111,11 @@ collision_mask = 3
 position = Vector2(-0.5, 0.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3tj6u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oly7h")
+volume_db = 5.0
+pitch_scale = 1.1
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]
