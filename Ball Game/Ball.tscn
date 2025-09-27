@@ -92,10 +92,10 @@ text = "Main Menu"
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = -13.0
+offset_left = -14.0
 offset_top = -5.0
 offset_right = 13.0
-offset_bottom = 5.0
+offset_bottom = 6.0
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2

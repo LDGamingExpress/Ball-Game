@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cuaef4wlngadm"]
+[gd_scene load_steps=12 format=3 uid="uid://cuaef4wlngadm"]
 
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_vtl75"]
+[ext_resource type="AudioStream" uid="uid://bl7vggg2q2fsa" path="res://Sounds/MetalImpactSound.mp3" id="2_cbg4j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbg4j"]
 friction = 0.94
@@ -58,7 +59,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuhlg"]
 size = Vector2(18, 31)
 
-[node name="Barrel" type="RigidBody2D"]
+[node name="Barrel" type="RigidBody2D" groups=["Barrels"]]
 texture_filter = 1
 collision_layer = 3
 collision_mask = 3
@@ -73,3 +74,7 @@ frame = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_kuhlg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["Barrels"]]
+stream = ExtResource("2_cbg4j")
+volume_db = 5.0

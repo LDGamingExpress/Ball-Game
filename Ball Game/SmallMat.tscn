@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://brmrpjvmgqakx"]
+[gd_scene load_steps=7 format=3 uid="uid://brmrpjvmgqakx"]
 
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_c183x"]
+[ext_resource type="AudioStream" uid="uid://cbm4w7o5jab1s" path="res://Sounds/SpringSound.mp3" id="2_jh67v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jh67v"]
 friction = 0.45
@@ -34,3 +35,7 @@ sprite_frames = SubResource("SpriteFrames_ugd3k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_c183x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jh67v")
+volume_db = 5.0

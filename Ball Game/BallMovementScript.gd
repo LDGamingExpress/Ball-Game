@@ -7,11 +7,12 @@ var ScoreText = preload("res://ScoreText.tscn")
 var buttonPressed = false
 var offset = Vector2(100, 0)
 @export var offsetMultiplier: Vector2
+var JustBounced = false
 
 #Trajectory line
 @export var line: Line2D
 
-var sounds = [load("res://Sounds/Ball Launched.mp3"), load("res://Sounds/Cheers.mp3"), load("res://Sounds/Cartoon Dizzy Birds.mp3"), load("res://Sounds/Referee Whistle.mp3")]
+var sounds = [load("res://Sounds/Ball Launched.mp3"), load("res://Sounds/Cheers.mp3"), load("res://Sounds/Cartoon Dizzy Birds.mp3"), load("res://Sounds/Referee Whistle.mp3"), load("res://Sounds/SpringSound.mp3")]
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -63,8 +64,19 @@ func _physics_process(delta: float) -> void:
 
 # Function for collision detection
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Bouncy"):
-		linear_velocity = linear_velocity * 3
+	if body.is_in_group("Barrels"):
+		body.get_node("AudioStreamPlayer2D").pitch_scale = rng.randf_range(.8, 1.2)
+		body.get_node("AudioStreamPlayer2D").play()
+	if body.is_in_group("Bouncy") and JustBounced == false:
+		body.get_node("AudioStreamPlayer2D").pitch_scale = rng.randf_range(.8, 1.2)
+		body.get_node("AudioStreamPlayer2D").play()
+		linear_velocity.y = linear_velocity.y * 3
+		var mag = sqrt(pow(linear_velocity.x,2) + pow(linear_velocity.y,2))
+		#print(mag)
+		if mag > 1600:
+			linear_velocity = linear_velocity/mag*1600
+		JustBounced = true
+		BounceCheck()
 	if body.is_in_group("KnockEnemy"):#Detects if the head of a ragdoll enemy is hit
 		var NodeB = body.get_parent().get_parent().get_parent()#Gets the characterbody of the enemy
 		if NodeB.KnockedOut == false:#Checks that enemy has not already been knocked out
@@ -116,3 +128,7 @@ func _on_next_button_pressed() -> void:
 
 func _on_menu_button_pressed() -> void:
 	pass # Replace with function body.
+
+func BounceCheck():
+	await get_tree().create_timer(0.25).timeout
+	JustBounced = false

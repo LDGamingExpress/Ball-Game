@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddrxamp253i4i"]
+
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_1wow6"]
+[ext_resource type="AudioStream" uid="uid://cbm4w7o5jab1s" path="res://Sounds/SpringSound.mp3" id="2_qsc3r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jh67v"]
+friction = 0.45
+bounce = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsc3r"]
+atlas = ExtResource("1_1wow6")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qvnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsc3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgj1f"]
+size = Vector2(31, 7)
+
+[node name="BigMatL" type="StaticBody2D" groups=["Bouncy"]]
+position = Vector2(0, -8)
+physics_material_override = SubResource("PhysicsMaterial_jh67v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4qvnc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 12.5)
+shape = SubResource("RectangleShape2D_cgj1f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qsc3r")
+volume_db = 5.0
