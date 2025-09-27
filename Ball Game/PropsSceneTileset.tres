@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://cebxss10ig50n"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://cebxss10ig50n"]
 
 [ext_resource type="PackedScene" uid="uid://cni1rh5aw5fwa" path="res://Glass.tscn" id="1_omoy3"]
 [ext_resource type="PackedScene" uid="uid://bex8m1hikaiup" path="res://SprayCan.tscn" id="2_i5rgf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dew7usfu3guml" path="res://TennisBall.tscn" id="7_dol8p"]
 [ext_resource type="PackedScene" uid="uid://ceieli3g3qsha" path="res://Coin.tscn" id="8_p4xdx"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="9_5c2k4"]
+[ext_resource type="PackedScene" uid="uid://s3e8rq17jawe" path="res://HorizontalGlass.tscn" id="9_i5rgf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5g1s2"]
 bounce = 0.22
@@ -26,6 +27,7 @@ scenes/5/scene = ExtResource("5_8hg3r")
 scenes/6/scene = ExtResource("6_2kl2l")
 scenes/7/scene = ExtResource("7_dol8p")
 scenes/8/scene = ExtResource("8_p4xdx")
+scenes/9/scene = ExtResource("9_i5rgf")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7astt"]
 texture = ExtResource("9_5c2k4")
