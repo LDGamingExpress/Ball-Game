@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://brmrpjvmgqakx"]
+
+[ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="1_c183x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jh67v"]
+friction = 0.45
+bounce = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sao11"]
+atlas = ExtResource("1_c183x")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugd3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sao11")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c183x"]
+size = Vector2(30, 7)
+
+[node name="SmallMat" type="StaticBody2D" groups=["Bouncy"]]
+position = Vector2(0, -8)
+physics_material_override = SubResource("PhysicsMaterial_jh67v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ugd3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_c183x")

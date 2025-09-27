@@ -63,6 +63,8 @@ func _physics_process(delta: float) -> void:
 
 # Function for collision detection
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Bouncy"):
+		linear_velocity = linear_velocity * 3
 	if body.is_in_group("KnockEnemy"):#Detects if the head of a ragdoll enemy is hit
 		var NodeB = body.get_parent().get_parent().get_parent()#Gets the characterbody of the enemy
 		if NodeB.KnockedOut == false:#Checks that enemy has not already been knocked out
