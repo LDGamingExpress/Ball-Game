@@ -90,6 +90,41 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
+[node name="GameEndMenu" type="VBoxContainer" parent="Camera2D/CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -21.0
+offset_right = 57.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_sr3km")
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/GameEndMenu"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "Level Complete!"
+
+[node name="Label2" type="Label" parent="Camera2D/CanvasLayer/GameEndMenu"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "Score:"
+
+[node name="MenuButton" type="Button" parent="Camera2D/CanvasLayer/GameEndMenu"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -14.0
@@ -119,6 +154,7 @@ pitch_scale = 1.1
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/GameEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

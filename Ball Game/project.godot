@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Ball Game"
-run/main_scene="uid://b8elia5j81q"
+config/name="Kick-Off"
+config/description="You are a football trapped in a rival team's school. You must escape back to your team and score a goal to help your team!"
+config/version="1.0"
+run/main_scene="uid://diixxl5k788ed"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://bjmik7438v42j"
+config/icon="uid://bjmik7438v42j"
 
 [autoload]
 

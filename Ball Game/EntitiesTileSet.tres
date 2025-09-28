@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://cd61cnu8e1dts"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://cd61cnu8e1dts"]
 
 [ext_resource type="PackedScene" uid="uid://b0oacflovb6jn" path="res://RagdollV2.tscn" id="1_yqqr8"]
 [ext_resource type="PackedScene" uid="uid://dinweklg6362d" path="res://Exit.tscn" id="2_h1ysl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ddrxamp253i4i" path="res://BigMatL.tscn" id="6_lejxs"]
 [ext_resource type="PackedScene" uid="uid://8170l1s0q0df" path="res://BigMatM.tscn" id="7_yhmqg"]
 [ext_resource type="PackedScene" uid="uid://bdvyrjg3vr5md" path="res://BigMatR.tscn" id="8_1rwo8"]
+[ext_resource type="PackedScene" uid="uid://dx56g6m4n5ft7" path="res://EndGoal.tscn" id="9_yhmqg"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mi27w"]
 scenes/1/scene = ExtResource("1_yqqr8")
@@ -18,6 +19,7 @@ scenes/5/scene = ExtResource("5_y4xj6")
 scenes/6/scene = ExtResource("6_lejxs")
 scenes/7/scene = ExtResource("7_yhmqg")
 scenes/8/scene = ExtResource("8_1rwo8")
+scenes/9/scene = ExtResource("9_yhmqg")
 
 [resource]
 sources/0 = SubResource("TileSetScenesCollectionSource_mi27w")

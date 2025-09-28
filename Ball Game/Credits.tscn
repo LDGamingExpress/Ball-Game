@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://cick5qavwrbw2"]
+
+[ext_resource type="Script" uid="uid://3msjyif3167f" path="res://CreditsScript.gd" id="1_obosj"]
+[ext_resource type="Texture2D" uid="uid://bjmik7438v42j" path="res://Textures/Kick-Off_Icon.png" id="2_k2yj5"]
+[ext_resource type="Theme" uid="uid://dxkuunrkr0b8j" path="res://LevelFontTheme.tres" id="3_xic2l"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_obosj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.682353)
+custom_minimum_size = Vector2(1024, 1024)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k2yj5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_xic2l")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 100
+text = "Credits:"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Music: Owen Smalls
+Art: LDGamingExpress, Damian
+Programming: LDGamingExpress, Damian, Christian Brackett
+Sound Effects:
+- Cartoon Birds Dizzy: smooth motion (youtube), https://www.youtube.com/watch?v=7TsQkVwZapA&list=PLZV8ndfcUh28o8QU0hNFnz6Xlid8fb51x&index=1
+- Whistle sound: MagiaZ, https://pixabay.com/sound-effects/football-referee-394016/
+- Cheers: DRAGON-STUDIO, https://pixabay.com/sound-effects/crowd-cheer-and-applause-406644/
+- Tennis ball fired: nektaria909, https://pixabay.com/sound-effects/ball-101479/
+- Tennis ball machine broken: wjoojoo, https://pixabay.com/sound-effects/cancrush5-88460/
+- Ball launched: musita182, https://pixabay.com/sound-effects/soccer-kick-6235/
+- Glass break: kakaist, https://pixabay.com/sound-effects/glass-break-316720/
+- Spring: C-V (Freesound), https://pixabay.com/sound-effects/jews-harp-boing-7111/
+- Metal impact: Rickplayer (Freesound), https://pixabay.com/sound-effects/metal-impact-6212/
+- Huh: elcharrua, https://freesound.org/people/elcharrua/sounds/530227/"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_credits_button_pressed"]

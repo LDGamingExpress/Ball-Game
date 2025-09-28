@@ -95,6 +95,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Glass"):#Detects if glass is hit
 		if body.Broken == false:#Checks that glass has not already been broken (important to prevent repeated calls)
 			body.call_deferred("Break")#Breaks glass, deferred in case it tries to break it repeatedly
+	if body.is_in_group("EndGoal"):
+		$Camera2D/CanvasLayer/GameEndMenu/Label2.text = "Score: " + str(Globals.Score)
+		$Camera2D/CanvasLayer/GameEndMenu.visible = true
+		
+		#Plays the whistle sound
+		body.get_node("AudioStreamPlayer2D").pitch_scale = rng.randf_range(.9, 1.1)
+		body.get_node("AudioStreamPlayer2D").play()
 	if body.is_in_group("Exit"):#Detects if the door to the next level is hit
 		$Camera2D/CanvasLayer/LevelEndMenu/Label2.text = "Score: " + str(Globals.Score)
 		$Camera2D/CanvasLayer/LevelEndMenu.visible = true
@@ -127,7 +134,7 @@ func _on_next_button_pressed() -> void:
 
 
 func _on_menu_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://MainMenu.tscn")
 
 func BounceCheck():
 	await get_tree().create_timer(0.25).timeout
