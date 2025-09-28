@@ -32,5 +32,7 @@ func KnockOver():
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and KnockedOut == false:#Checks that the object is the player and that the enemy is not already knocked out
 		# Adds angular velocity to the arms to fling them up
+		$HuhPlayer.pitch_scale = rng.randf_range(.8, 1.2)
+		$HuhPlayer.play()
 		$Chest/ArmLJoint/ArmL.angular_velocity = 50
 		$Chest/ArmRJoint/ArmR.angular_velocity = -50
