@@ -13,6 +13,7 @@ var JustBounced = false
 @export var line: Line2D
 
 var sounds = [load("res://Sounds/Ball Launched.mp3"), load("res://Sounds/Cheers.mp3"), load("res://Sounds/Cartoon Dizzy Birds.mp3"), load("res://Sounds/Referee Whistle.mp3"), load("res://Sounds/SpringSound.mp3")]
+var music = load("res://Music/GOAL.mp3")
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -105,6 +106,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Exit"):#Detects if the door to the next level is hit
 		$Camera2D/CanvasLayer/LevelEndMenu/Label2.text = "Score: " + str(Globals.Score)
 		$Camera2D/CanvasLayer/LevelEndMenu.visible = true
+		
+		#Plays GOAL theme
+		$Music.stream = music
+		$Music.play()
 		
 		#Plays the whistle sound
 		body.get_node("AudioStreamPlayer2D").pitch_scale = rng.randf_range(.9, 1.1)

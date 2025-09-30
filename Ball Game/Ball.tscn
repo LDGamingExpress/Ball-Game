@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://btydu2e6jwv4e"]
+[gd_scene load_steps=11 format=3 uid="uid://btydu2e6jwv4e"]
 
 [ext_resource type="Script" uid="uid://cayjgrj31uwbh" path="res://BallMovementScript.gd" id="1_3tj6u"]
 [ext_resource type="Texture2D" uid="uid://3mj8kov5dshj" path="res://Textures/BallGameSpriteSheet.png" id="2_sr3km"]
 [ext_resource type="Texture2D" uid="uid://yvy6k5h64821" path="res://Textures/Line.png" id="3_oly7h"]
 [ext_resource type="Theme" uid="uid://dxkuunrkr0b8j" path="res://LevelFontTheme.tres" id="3_sr3km"]
 [ext_resource type="AudioStream" uid="uid://dr5ywky0qxsx4" path="res://Sounds/Ball Launched.mp3" id="5_oly7h"]
+[ext_resource type="AudioStream" uid="uid://di4kfemyjtsex" path="res://Music/Play Ball!.mp3" id="6_525q5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_525q5"]
 atlas = ExtResource("2_sr3km")
@@ -151,6 +152,11 @@ shape = SubResource("CapsuleShape2D_3tj6u")
 stream = ExtResource("5_oly7h")
 volume_db = 5.0
 pitch_scale = 1.1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_525q5")
+volume_db = 5.0
+autoplay = true
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b36wf0oeevfeu"
+path="res://.godot/imported/Battletoads Pause Theme Cover.mp3-bd97b02fc227c990aafd7138654e5cdd.mp3str"
+
+[deps]
+
+source_file="res://Music/Battletoads Pause Theme Cover.mp3"
+dest_files=["res://.godot/imported/Battletoads Pause Theme Cover.mp3-bd97b02fc227c990aafd7138654e5cdd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
