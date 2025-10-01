@@ -54,6 +54,13 @@ theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 100
 text = "Level Selection:"
 
+[node name="TutorialButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 48
+text = "Tutorial"
+
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 columns = 5
@@ -143,6 +150,7 @@ text = "Back"
 stream = ExtResource("4_biqjj")
 autoplay = true
 
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/VBoxContainer/L1Button" to="." method="_on_l_1_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/VBoxContainer/L6Button" to="." method="_on_l_6_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/VBoxContainer2/L2Button" to="." method="_on_l_2_button_pressed"]
