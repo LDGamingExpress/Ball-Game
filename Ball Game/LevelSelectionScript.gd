@@ -1,7 +1,10 @@
 extends Control
 
+func _ready() -> void:
+	$AudioStreamPlayer2D.play(Globals.MusicPos)
 
 func _on_main_menu_button_pressed() -> void:
+	Globals.MusicPos = $AudioStreamPlayer2D.get_playback_position()
 	get_tree().change_scene_to_file("res://MainMenu.tscn")
 
 
@@ -52,7 +55,7 @@ func _on_l_5_button_pressed() -> void:
 
 func _on_l_10_button_pressed() -> void:
 	Globals.Level = 10
-	get_tree().change_scene_to_file("res://Level10.tscn")
+	get_tree().change_scene_to_file("res://FinalLevel.tscn")
 
 
 func _on_tutorial_button_pressed() -> void:

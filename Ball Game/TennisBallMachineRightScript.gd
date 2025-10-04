@@ -55,3 +55,4 @@ func onBreakAreaEntered(area: Area2D) -> void:
 		NewST.global_position = global_position
 		get_parent().add_child(NewST)
 		Globals.Score += 150
+		Globals.ScoreGainedThisLevel += 150

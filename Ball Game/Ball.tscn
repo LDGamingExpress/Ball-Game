@@ -49,6 +49,7 @@ shape = SubResource("CapsuleShape2D_5pc7e")
 zoom = Vector2(2.5, 2.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+process_mode = 3
 
 [node name="LevelEndMenu" type="VBoxContainer" parent="Camera2D/CanvasLayer"]
 visible = false
@@ -120,10 +121,52 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 48
 text = "Score:"
 
+[node name="Label3" type="Label" parent="Camera2D/CanvasLayer/GameEndMenu"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "High Score:"
+
 [node name="MenuButton" type="Button" parent="Camera2D/CanvasLayer/GameEndMenu"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer"]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -108.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme = ExtResource("3_sr3km")
+
+[node name="PauseButton" type="Button" parent="Camera2D/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_sr3km")
+theme_override_font_sizes/font_size = 36
+text = "Pause"
+
+[node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 36
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="Camera2D/CanvasLayer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 36
 text = "Main Menu"
 
 [node name="Button" type="Button" parent="."]
@@ -154,13 +197,17 @@ volume_db = 5.0
 pitch_scale = 1.1
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("6_525q5")
-volume_db = 5.0
+volume_db = 3.5
 autoplay = true
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/LevelEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/GameEndMenu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/VBoxContainer/MainMenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

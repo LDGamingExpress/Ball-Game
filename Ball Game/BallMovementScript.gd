@@ -17,6 +17,8 @@ var music = load("res://Music/GOAL.mp3")
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	$Music.play(Globals.MusicPos)
+	Globals.ScoreGainedThisLevel = 0
 	rng.randomize()
 
 #marks the button as being pressed and changes the offset to show it has been clicked
@@ -93,11 +95,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			NodeB.KnockOut()#Knocks out enemy
 			NodeB.KnockOver()#Pushes over enemy by adding angular velocity to their head
 			Globals.Score += 100
+			Globals.ScoreGainedThisLevel += 100
 	if body.is_in_group("Glass"):#Detects if glass is hit
 		if body.Broken == false:#Checks that glass has not already been broken (important to prevent repeated calls)
 			body.call_deferred("Break")#Breaks glass, deferred in case it tries to break it repeatedly
 	if body.is_in_group("EndGoal"):
 		$Camera2D/CanvasLayer/GameEndMenu/Label2.text = "Score: " + str(Globals.Score)
+		var HighScore = int(load_game())
+		if HighScore < Globals.Score:
+			save(Globals.Score)
+			HighScore = Globals.Score
+		$Camera2D/CanvasLayer/GameEndMenu/Label3.text = "High Score: " + str(HighScore)
+		
 		$Camera2D/CanvasLayer/GameEndMenu.visible = true
 		
 		#Plays the whistle sound
@@ -127,6 +136,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		NewST.global_position = body.global_position
 		get_parent().add_child(NewST)
 		Globals.Score += 250
+		Globals.ScoreGainedThisLevel += 250
 		
 		body.visible = false
 		await get_tree().create_timer(3.0).timeout
@@ -135,12 +145,58 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 # Function to change level when "next level" button is pressed
 func _on_next_button_pressed() -> void:
 	Globals.Level += 1
+	get_tree().paused = false
+	Globals.MusicPos = $Music.get_playback_position()
 	get_tree().change_scene_to_file(Globals.Levels[Globals.Level])
 
 
 func _on_menu_button_pressed() -> void:
+	Globals.MusicPos = 0.0
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://MainMenu.tscn")
 
 func BounceCheck():
 	await get_tree().create_timer(0.25).timeout
 	JustBounced = false
+
+
+func _on_pause_button_pressed() -> void:
+	if get_tree().paused == true:
+		get_tree().paused = false
+		$Camera2D/CanvasLayer/VBoxContainer/PauseButton.text = "Pause"
+		$Camera2D/CanvasLayer/VBoxContainer/RestartButton.visible = false
+		$Camera2D/CanvasLayer/VBoxContainer/MainMenuButton.visible = false
+	else:
+		get_tree().paused = true
+		$Camera2D/CanvasLayer/VBoxContainer/PauseButton.text = "Resume"
+		$Camera2D/CanvasLayer/VBoxContainer/RestartButton.visible = true
+		$Camera2D/CanvasLayer/VBoxContainer/MainMenuButton.visible = true
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	Globals.Score -= Globals.ScoreGainedThisLevel
+	get_tree().reload_current_scene()
+
+func save(SaveData):
+	var SaveFile = FileAccess.open("user://KickOffSaveGame.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(SaveData)
+	SaveFile.store_line(json_string)
+
+func load_game():
+	if not FileAccess.file_exists("user://KickOffSaveGame.save"):
+		return(0)
+	var save_file = FileAccess.open("user://KickOffSaveGame.save", FileAccess.READ)
+	while save_file.get_position() < save_file.get_length():
+		var json_string = save_file.get_line()
+
+		# Creates the helper class to interact with JSON.
+		var json = JSON.new()
+
+		# Check if there is any error while parsing the JSON string, skip in case of failure.
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+
+		# Get the data from the JSON object.
+		return(json.data)
